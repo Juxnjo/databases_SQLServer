@@ -26,3 +26,25 @@ CREATE TABLE empleados (
 	cel INT NOT NULL
 );
 
+--Insertando datos
+
+INSERT INTO departamentos (id_dep, nom)
+VALUES ('Ant','Antioquia'), ('Val','Valle'), ('Bol','Bolivar'), 
+		('Qui','Quindio'), ('Nsa', 'Norte Santander' ), ('San', 'Santander');
+
+INSERT INTO ciudades (id_ciu, id_dep, nom)
+VALUES ('Tulu', 'Val', 'Tulua'), ('Cali', 'Val', 'Cali'), ('Mede', 'Ant', 'Medellin'),
+		('Gira', 'Ant', 'Girardota'), ('Cucu', 'Nsa', 'Cucuta'), ('Buca', 'San', 'Bucaramanga');
+
+INSERT INTO cargos (id_car, nom, salario)
+VALUES (7, 'Operario', 990), (9, 'Ayudante', 780), (11, 'Secretaria Gral', 1100),
+		(20, 'Jefe Contabilidad', 3900), (50, 'Gerente General', 7200);
+
+
+--Mostrar todos los datos
+
+SELECT * FROM departamentos
+SELECT * FROM ciudades
+SELECT * FROM cargos
+SELECT * FROM empleados
+
