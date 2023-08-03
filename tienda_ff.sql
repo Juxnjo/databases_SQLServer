@@ -32,6 +32,12 @@ CREATE TABLE detalle_factura_productos (
 	id INT PRIMARY KEY,
 	id_fac INT FOREIGN KEY REFERENCES facturas,
 	id_cli INT FOREIGN KEY REFERENCES productos,
-	cant INT NOT NULL
+	cantidad INT NOT NULL
 );
+
+INSERT INTO categorias (id_cat, nom) VALUES (1, 'compu');
+INSERT INTO productos (id_prod, nom, cantidad, id_cat) VALUES (1, 'usb', 10, 1), (2, 'cds', 5, 1), (3, 'mouse', 10, 1);
+INSERT INTO empleados (id_emp, nom) VALUES (1, 'carlos'), (2, 'mario');
+INSERT INTO clientes (id_cli, nom) VALUES (100, 'juan'), (101, 'sandra'), (102, 'maria'), (103, 'alex');
+INSERT INTO facturas (id_fac, fecha, id_emp, id_cli) VALUES (300, '10/10/2022', 2, 102), (301, '10/05/2023', 2, 102), (302, '10/06/2022', 2, 102)
 
