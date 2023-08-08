@@ -1,0 +1,22 @@
+CREATE TABLE productos (
+	idProd INT PRIMARY KEY,
+	nombre NVARCHAR(20) NOT NULL,
+	valor MONEY NOT NULL
+);
+
+CREATE TABLE clientes (
+	idCli INT PRIMARY KEY,
+	nombre NVARCHAR(30) NOT NULL,
+	apellido NVARCHAR(30) NOT NULL,
+	cel INT NOT NULL,
+	ingresos INT DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE facturas (
+	idFac INT PRIMARY KEY,
+	idProd INT FOREIGN KEY REFERENCES productos,
+	idCli INT FOREIGN KEY REFERENCES clientes,
+	cantidad INT DEFAULT 1 NOT NULL,
+	descuento INT DEFAULT 0 NOT NULL,
+	precio MONEY NOT NULL
+);
