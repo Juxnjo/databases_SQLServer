@@ -186,6 +186,18 @@ WHERE empleados.id_ciu IN (
 	WHERE ciudades.id_dep IN ('Ant')
 );
 
+SELECT *
+FROM empleados
+WHERE id_ciu IN (
+    SELECT id_ciu
+    FROM ciudades
+    WHERE id_dep IN (
+        SELECT id_dep
+        FROM departamentos
+        WHERE nom = 'Antioquia'
+    )
+);
+
 
 --Empleados por nacimiento 
 
