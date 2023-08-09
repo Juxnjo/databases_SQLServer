@@ -112,9 +112,81 @@ SELECT * FROM cargos WHERE salario > 2000;
 
 --Departamenos por vocal y letra
 
-SELECT * FROM departamentos WHERE nom LIKE '%u%' OR nom LIKE '%t%'
+SELECT * FROM departamentos WHERE nom LIKE '%u%' OR nom LIKE '%t%';
 
-SELECT * FROM departamentos WHERE nom LIKE '%a%' AND nom LIKE '%c%'
+SELECT * FROM departamentos WHERE nom LIKE '%a%' AND nom LIKE '%c%';
 
 --Cargos por salario
+
+SELECT * FROM cargos WHERE salario > 2000 AND salario < 5000;
+
+--Empleados por fecha de nacimiento
+
+SELECT * FROM empleados WHERE nacimiento BETWEEN '01/01/1983' AND '12/31/1988';
+
+--Insertando nuevos datos
+
+INSERT INTO cargos (id_car, nom, salario)
+VALUES (10, 'Auxiliar Contable', 1200), (60, 'Mensajero', 850), (40, 'Jefe de Sistemas', 3850 );
+
+--Empleados por nacimiento
+
+SELECT TOP 1 * FROM empleados ORDER BY nacimiento DESC;
+
+-- Departamentos ordenados
+
+SELECT TOP 2 * FROM departamentos ORDER BY nom ASC;
+
+--Insertando mas datos
+
+INSERT INTO ciudades (id_ciu, id_dep, nom)
+VALUES ('Envi', 'Ant', 'Envigado'), ('Turb', 'Bol', 'Turbaco'), 
+		('Arme', 'Qui', 'Armenia');
+
+INSERT INTO empleados (id_emp, nomb, apell, nacimiento, id_car, id_ciu, direccion, cel)
+VALUES (98005005 ,'Juan Camilo', 'Torres Marin', '03/25/1975', 60, 'Envi', 'Calle 15 sur 25', 2771560),
+		(32800900 ,'Maria Antonia', 'Acevedo Gardeazabal', '04/15/1972', 40, 'Turb', 'Av 2 68 norte 4', 5202020),
+		(150300600 ,'Juan', 'Martelo', '02/28/1988', 10, 'Tulu', 'Transv 1 82 20', 1231020)
+
+--Actualizando datos
+
+UPDATE empleados 
+SET direccion = 'Calle 40 52 110', cel = 2068080, id_car = 9
+WHERE id_emp = 150300600;
+
+UPDATE cargos
+SET nom = 'Mensajero Cat 1'
+WHERE nom LIKE '%Mensajero%';
+
+UPDATE empleados
+SET cel = 3598978
+WHERE id_emp = 704040;
+
+UPDATE cargos 
+SET salario = 2500
+WHERE id_car BETWEEN 20 AND 30;
+
+
+--Alterando tablas
+
+ALTER TABLE ciudades 
+ADD intCod_Postal_CIU INT NULL;
+
+UPDATE ciudades
+SET intCod_Postal_CIU = 050001
+WHERE nom = 'Medellin';
+
+--Empleados por departamento
+
+SELECT empleados.*
+FROM empleados
+WHERE empleados.id_ciu IN (
+	SELECT ciudades.id_ciu
+	FROM ciudades
+	WHERE ciudades.id_dep IN ('Ant')
+);
+
+
+--Empleados por nacimiento 
+
 
