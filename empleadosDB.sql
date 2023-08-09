@@ -60,3 +60,27 @@ SELECT * FROM empleados
 
 SELECT id_car, id_emp, nomb FROM empleados ORDER BY id_car ASC;
 
+--Empleado por cargo
+
+SELECT * FROM empleados WHERE id_car = 50 OR id_car = 11;
+
+--por apellido y ciudad
+
+SELECT * FROM empleados WHERE apell = 'Carrillo' AND id_ciu = 'Cali';
+
+--Por cargo y ciudad
+
+SELECT * FROM empleados WHERE id_car = 20 AND id_ciu = 'Mede';
+
+--Mostrando ciertos datos
+
+SELECT nomb, apell, nacimiento, id_emp FROM empleados;
+
+--Por inicial de apellido
+
+SELECT * FROM empleados WHERE apell LIKE 'M%'
+
+--Por ciudad
+
+SELECT * FROM empleados WHERE id_ciu IN ('Cali', 'Mede', 'Tulu')
+
