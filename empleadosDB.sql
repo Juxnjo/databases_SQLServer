@@ -56,3 +56,7 @@ SELECT * FROM ciudades
 SELECT * FROM cargos
 SELECT * FROM empleados
 
+--Ordenados por cargo
+
+SELECT id_car, id_emp, nomb FROM empleados ORDER BY id_car ASC;
+
