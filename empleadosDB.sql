@@ -66,11 +66,17 @@ SELECT * FROM empleados WHERE id_car = 50 OR id_car = 11;
 
 --por apellido y ciudad
 
-SELECT * FROM empleados WHERE apell = 'Carrillo' AND id_ciu = 'Cali';
+SELECT * FROM empleados WHERE apell = 'carrillo' AND id_ciu = 'cali';
 
 --Por cargo y ciudad
 
-SELECT * FROM empleados WHERE id_car = 20 AND id_ciu = 'Mede';
+SELECT empleados.*
+FROM empleados
+WHERE id_car = 20 AND empleados.id_ciu IN (
+		SELECT ciudades.id_ciu
+		FROM ciudades
+		WHERE ciudades.nom IN ('Medellin')
+);
 
 --Mostrando ciertos datos
 
@@ -78,9 +84,37 @@ SELECT nomb, apell, nacimiento, id_emp FROM empleados;
 
 --Por inicial de apellido
 
-SELECT * FROM empleados WHERE apell LIKE 'M%'
+SELECT * FROM empleados WHERE apell LIKE 'm%'
 
 --Por ciudad
 
-SELECT * FROM empleados WHERE id_ciu IN ('Cali', 'Mede', 'Tulu')
+SELECT empleados.* 
+FROM empleados 
+WHERE empleados.id_ciu IN (
+		SELECT ciudades.id_ciu
+		FROM ciudades
+		WHERE ciudades.nom IN ('Cali', 'Medellin', 'Tulua')
+);
+
+--Por cargo
+
+SELECT empleados.* 
+FROM empleados 
+WHERE empleados.id_car IN(
+	SELECT cargos.id_car 
+	FROM cargos
+	WHERE cargos.nom IN ('jefe contabilidad', 'gerente general')
+);
+
+--Cargos por salario
+
+SELECT * FROM cargos WHERE salario > 2000;
+
+--Departamenos por vocal y letra
+
+SELECT * FROM departamentos WHERE nom LIKE '%u%' OR nom LIKE '%t%'
+
+SELECT * FROM departamentos WHERE nom LIKE '%a%' AND nom LIKE '%c%'
+
+--Cargos por salario
 
