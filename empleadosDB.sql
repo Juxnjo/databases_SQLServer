@@ -203,4 +203,7 @@ WHERE id_ciu IN (
 
 SELECT * FROM empleados WHERE MONTH (nacimiento) BETWEEN 1 AND 6
 
+--Empleados por cargo
+
+SELECT * FROM empleados WHERE id_car BETWEEN 5 AND 20
 
