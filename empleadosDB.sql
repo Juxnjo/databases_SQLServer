@@ -201,4 +201,6 @@ WHERE id_ciu IN (
 
 --Empleados por nacimiento 
 
+SELECT * FROM empleados WHERE MONTH (nacimiento) BETWEEN 1 AND 6
+
 
