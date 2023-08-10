@@ -207,3 +207,19 @@ SELECT * FROM empleados WHERE MONTH (nacimiento) BETWEEN 1 AND 6
 
 SELECT * FROM empleados WHERE id_car BETWEEN 5 AND 20
 
+--Datos no repetidos
+
+SELECT DISTINCT nomb FROM empleados 
+
+--Ciudades por letra
+
+SELECT * FROM ciudades WHERE nom LIKE ('%G%')
+
+--Borrando datos
+
+DELETE FROM ciudades WHERE nom IN ('Cucuta', 'Bucaramanga')
+
+DELETE FROM cargos
+WHERE id_car NOT IN (SELECT DISTINCT id_car FROM empleados);
+
+
