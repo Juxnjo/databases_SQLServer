@@ -26,6 +26,7 @@ CREATE TABLE proveedores (
 
 
 CREATE TABLE envios (
+	idEnvios INT PRIMARY KEY IDENTITY (9,3),
 	idProveedor INT FOREIGN KEY REFERENCES proveedores,
 	idComponente INT FOREIGN KEY REFERENCES componentes,
 	idArticulo INT FOREIGN KEY REFERENCES articulos,
@@ -76,3 +77,32 @@ GROUP BY categoria, idCiudad;
 
 --Se requiere visualizar los diferentes proveedores, cuya ciudad sea Bogotá y Barranquilla
 
+SELECT idProveedor, nombreProveedor, idCiudad 
+FROM proveedores 
+WHERE idCiudad = 'Bog' OR idCiudad = 'Bar'
+
+SELECT proveedores.*
+FROM proveedores
+WHERE proveedores.idCiudad IN (
+	SELECT ciudades.idCiudad
+	FROM ciudades
+	WHERE ciudades.nombreCiudad IN ('Bogota', 'Barranquilla')
+)
+
+--Se requiere conocer los componentes cuyo nombre componente sea "X3A" y su peso este entre 20 y 60
+
+SELECT nombreComponente, peso
+FROM componentes 
+WHERE nombreComponente = 'X3A' AND peso BETWEEN 20 AND 60
+
+--Se requiere conocer las cantidades de envíos, por cada nombre artículo cuya ciudad sea Barranquilla
+
+SELECT 
+    articulos.nombreArticulo,
+    (
+        SELECT SUM(envios.cantidad)
+        FROM envios
+        WHERE envios.idArticulo = articulos.idArticulo
+    ) AS TotalEnvios
+FROM articulos
+WHERE articulos.idCiudad = 'Bar';
