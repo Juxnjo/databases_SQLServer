@@ -65,4 +65,14 @@ VALUES (1, 10, 100, 100, '20090113'), (2, 20, 200, 200, '20090315'), (3, 30, 300
 		(7, 50, 500, 300, '20091230'), (8, 60, 600, 400, '20090315'), (9, 70, 700, 5000, '20091230')
 
 
+--Se requiere conocer de la tabla proveedores, las categorías y ciudades únicas.
+
+SELECT DISTINCT categoria, idCiudad
+FROM proveedores;
+
+SELECT categoria, idCiudad
+FROM proveedores
+GROUP BY categoria, idCiudad;
+
+--Se requiere visualizar los diferentes proveedores, cuya ciudad sea Bogotá y Barranquilla
 
