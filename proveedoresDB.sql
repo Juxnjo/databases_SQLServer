@@ -24,6 +24,7 @@ CREATE TABLE proveedores (
 	idCiudad NVARCHAR(3) FOREIGN KEY REFERENCES ciudades
 );
 
+
 CREATE TABLE envios (
 	idProveedor INT FOREIGN KEY REFERENCES proveedores,
 	idComponente INT FOREIGN KEY REFERENCES componentes,
@@ -31,4 +32,37 @@ CREATE TABLE envios (
 	cantidad INT NOT NULL,
 	fechaEnvio DATE NOT NULL
 );
+
+
+INSERT INTO ciudades (idCiudad, nombreCiudad)
+VALUES ('Bar', 'Barranquilla'), ('Med', 'Medellin'), ('Cal', 'Cali'), ('Bog', 'Bogota')
+
+INSERT INTO articulos (nombreArticulo, idCiudad)
+VALUES ('Clasificadora', 'Bar'), ('Perforadora', 'Med'), ('Lectora', 'Cal'), ('Consola', 'Bog'), ('Mezcladora', 'Bar'), 
+		('Terminal', 'Med'), ('Cinta', 'Cal'), ('Clasificadora', 'Bog'), ('Perforadora', 'Bog'), ('Lectora', 'Bar')
+
+INSERT INTO componentes (nombreComponente, color, peso, idCiudad)
+VALUES ('X3A', 'Rojo', 12, 'Bar'), ('B85', 'Verde', 17, 'Med'), ('C4B', 'Azul', 17, 'Cal'),
+		('VT8', 'Morado', 20, 'Bog'), ('C30', 'Amarillo', 30, 'Bar'), ('X3A', 'Rojo', 54, 'Med'),
+		('B86', 'Verde', 28, 'Cal'), ('C4B', 'Azul', 10, 'Bog'), ('VT9', 'Morado', 23, 'Bog'),
+		('C31', 'Amarillo', 30, 'Bar')
+
+INSERT INTO proveedores (nombreProveedor, categoria, idCiudad)
+VALUES ('Andres Verjel', 10, 'Bar'), ('Carlos Villareal', 20, 'Med'), ('Julian Jaramillo', 30, 'Cal'),
+		('Jose Perez', 40, 'Bog'), ('Andrea Morales', 10, 'Bar'), ('Eva Braunt', 20, 'Med'),
+		('Christian Mejia', 30, 'Cal'), ('Natalia Mendoza', 40, 'Bog'), ('Daniel Ruiz', 40, 'Bog')
+
+INSERT INTO envios (idProveedor, idComponente, idArticulo, cantidad, fechaEnvio)
+VALUES (1, 10, 100, 100, '20090113'), (2, 20, 200, 200, '20090315'), (3, 30, 300, 300, '20090315'), 
+		(4, 40, 400, 400, '20090620'), (5, 50, 500, 5000, '20090113'), (6, 60, 600, 4560, '20090620'), 
+		(7, 70, 700, 100, '20090315'), (8, 80, 800, 200, '20090113'), (9, 90, 900, 300, '20090315'), 
+		(1, 100, 1000, 400, '20090620'), (2, 10, 100, 5000, '20090113'), (3, 20, 200, 4560, '20090620'), 
+		(4, 30, 300, 300, '20091230'), (5, 40, 400, 400, '20090113'), (6, 50, 500, 5000, '20090315'), 
+		(7, 60, 600, 4560, '20090113'), (8, 70, 700, 100, '20090620'), (9, 80, 800, 200, '20090113'), 
+		(7, 60, 600, 4560, '20090113'), (8, 70, 700, 100, '20090620'), (9, 80, 800, 200, '20090113'), 
+		(1, 90, 900, 300, '20091230'), (2, 100, 1000, 400, '20090620'), (3, 10, 100, 5000, '20091230'), 
+		(4, 20, 200, 4560, '20090315'), (5, 30, 300, 100, '20091230'), (6, 40, 400, 200, '20090620'), 
+		(7, 50, 500, 300, '20091230'), (8, 60, 600, 400, '20090315'), (9, 70, 700, 5000, '20091230')
+
+
 
