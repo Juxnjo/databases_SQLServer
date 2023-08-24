@@ -106,3 +106,13 @@ SELECT
     ) AS TotalEnvios
 FROM articulos
 WHERE articulos.idCiudad = 'Bar';
+
+--Se requiere visualizar cuantos envíos se realizan por cada id_componente 
+
+SELECT idComponente, COUNT(*) AS CantidadEnvios
+FROM envios
+GROUP BY idComponente;
+
+
+--Se requiere visualizar cuantos envíos se realizan por cada nombre componente que en su color comienza por "A"
+
