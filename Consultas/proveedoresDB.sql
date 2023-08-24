@@ -116,3 +116,17 @@ GROUP BY idComponente;
 
 --Se requiere visualizar cuantos envíos se realizan por cada nombre componente que en su color comienza por "A"
 
+SELECT componentes.*, 
+       (SELECT COUNT(*) 
+	   FROM envios 
+	   WHERE envios.idComponente = componentes.idComponente
+	   ) AS CantidadEnvios
+FROM componentes
+WHERE componentes.color LIKE 'A%';
+
+--Se requiere conocer por cada nombre de componente, su promedio en peso
+
+SELECT nombreComponente, AVG(peso) AS PromedioPeso
+FROM componentes
+GROUP BY nombreComponente;
+
